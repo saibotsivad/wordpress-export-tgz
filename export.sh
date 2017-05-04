@@ -15,7 +15,7 @@ echo "Making backup of WordPress folder..."
 tar -cvf $TEMP_FOLDER/export.tar $WORDPRESS_FOLDER
 
 echo "Exporting database..."
-mysqldump -u$DB_USER -p$DB_PASSWORD $DB_NAME > $TEMP_FOLDER/database.sql
+mysqldump -u$DB_USER -p$DB_PASSWORD -h $DB_HOST $DB_NAME > $TEMP_FOLDER/database.sql
 tar --append --file=$TEMP_FOLDER/export.tgz $TEMP_FOLDER/database.sql
 rm $TEMP_FOLDER/database.sql
 
