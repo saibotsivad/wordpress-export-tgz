@@ -3,7 +3,7 @@
 CONFIGURATION_FILE=$1
 OUTPUT_FILE=$2
 NOW=$(date +"%Y-%m-%d-%H%M%S")
-TEMP_FOLDER=/tmp/wordpress-export-tgz-$NOW
+TEMP_FOLDER=./wordpress-export-tgz-$NOW
 
 mkdir -p $TEMP_FOLDER
 source $CONFIGURATION_FILE
@@ -20,7 +20,7 @@ tar --append --file=$TEMP_FOLDER/export.tgz $TEMP_FOLDER/database.sql
 rm $TEMP_FOLDER/database.sql
 
 echo "Compressing file..."
-tar -9  $TEMP_FOLDER/export.tar
+gzip -9  $TEMP_FOLDER/export.tar
 # results in a file $TEMP_FOLDER/export.tgz
 
 echo "Moving file..."
